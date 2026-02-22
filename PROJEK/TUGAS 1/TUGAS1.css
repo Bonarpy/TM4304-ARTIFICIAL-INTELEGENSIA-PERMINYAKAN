@@ -1,0 +1,139 @@
+/* TUGAS1.css */
+
+/* === RESET & FONT === */
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+
+body {
+    background-color: #050200; 
+    display: flex; 
+    flex-direction: column; /* Mengalirkan halaman ke bawah */
+    align-items: center; 
+    min-height: 100vh;
+    color: #e0e0e0; 
+    padding: 20px 0;
+}
+
+/* === KANVAS HALAMAN === */
+.poster-container {
+    width: 210mm; 
+    height: 297mm; 
+    background-color: transparent !important; 
+    position: relative; 
+    padding: 10mm 12mm; 
+    overflow: hidden; 
+    display: flex; 
+    flex-direction: column;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    margin-bottom: 40px; /* Jarak antar halaman di layar */
+}
+
+/* === LAPISAN GRADIEN  === */
+.poster-container::before {
+    content: ""; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(135deg, #1a0b2e 0%, #31102f 40%, #5c1e0b 100%) !important;
+    z-index: -1; 
+    -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important;
+}
+
+/* ORNAMEN CAHAYA HALUS */
+.glow-orb { position: absolute; border-radius: 50%; filter: blur(95px); z-index: 0; display: block; }
+.orb-1 { width: 450px; height: 450px; background: rgba(220, 20, 140, 0.4); top: -100px; left: -100px; }
+.orb-2 { width: 550px; height: 550px; background: rgba(255, 100, 0, 0.4); bottom: -120px; right: -80px; }
+.orb-3 { width: 350px; height: 350px; background: rgba(0, 212, 255, 0.25); top: 35%; left: 25%; }
+
+/* === AREA KONTEN === */
+.content-wrapper { position: relative; z-index: 10; display: flex; flex-direction: column; height: 100%; justify-content: flex-start; }
+
+/* HEADER & PENYUSUN */
+.header { text-align: center; margin-bottom: 8px; }
+.header h1 { font-size: 24pt; font-weight: 900; margin-bottom: 2px; color: #ffffff; text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); }
+.header h2 { font-size: 11.5pt; color: #facc15; font-weight: 500; margin-bottom: 10px; }
+
+.authors {
+    text-align: center; font-size: 8.5pt; font-weight: 600; color: #fed7aa;
+    padding-bottom: 10px; margin-bottom: 12px;
+    border-bottom: 1px solid rgba(255, 200, 100, 0.3);
+}
+.authors span { display: inline-block; margin: 0 6px; }
+
+/* === LAYOUTING BOCKS === */
+.row-full { width: 100%; margin-bottom: 10px; }
+.row-half { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 10px; }
+
+/* === GAYA KACA (GLASSMORPHISM) === */
+.glass-card {
+    background: rgba(15, 15, 25, 0.7); 
+    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    border-radius: 8px; padding: 12px 14px;
+    border: 1px solid rgba(255, 255, 255, 0.08); 
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+}
+
+.card-header { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; padding-bottom: 4px; border-bottom: 1px dashed rgba(255, 255, 255, 0.15); }
+.card-header svg { width: 18px; height: 18px; flex-shrink: 0; }
+.glass-card h3 { font-size: 11pt; font-weight: 700; margin: 0; letter-spacing: 0.3px; }
+
+/* Teks Paragraf */
+.glass-card p { font-size: 8.5pt; line-height: 1.4; color: #f1f5f9; text-align: justify; margin-bottom: 4px; }
+.glass-card ul { padding-left: 16px; margin-top: 2px; }
+.glass-card li { font-size: 8.5pt; line-height: 1.4; color: #f1f5f9; margin-bottom: 3px; text-align: justify; }
+
+/* WARNA AKSEN KARTU */
+.c-yellow { border-top: 3px solid #facc15; } .c-yellow h3, .c-yellow svg { color: #facc15; fill: #facc15; }
+.c-cyan { border-top: 3px solid #22d3ee; } .c-cyan h3, .c-cyan svg { color: #22d3ee; fill: #22d3ee; }
+.c-pink { border-top: 3px solid #fb7185; } .c-pink h3, .c-pink svg { color: #fb7185; fill: #fb7185; }
+.c-purple { border-top: 3px solid #c084fc; } .c-purple h3, .c-purple svg { color: #c084fc; fill: #c084fc; }
+
+/* === TIMELINE HORIZONTAL === */
+.timeline-horizontal { display: flex; justify-content: space-between; position: relative; padding-top: 18px; margin-top: 5px; }
+.timeline-horizontal::before { content: ''; position: absolute; top: 4px; left: 5%; right: 5%; height: 2px; background: rgba(34, 211, 238, 0.4); z-index: 1; }
+.timeline-item { flex: 1; position: relative; text-align: center; padding: 0 4px; }
+.timeline-item::before {
+    content: ''; position: absolute; top: -18px; left: 50%; transform: translateX(-50%);
+    width: 10px; height: 10px; border-radius: 50%;
+    background-color: #22d3ee !important; 
+    box-shadow: 0 0 6px #22d3ee; z-index: 2;
+    -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important;
+}
+.timeline-year { font-weight: 800; color: #22d3ee; display: block; margin-bottom: 3px; font-size: 9.5pt; }
+.timeline-desc { font-size: 7.5pt; line-height: 1.3; color: #f1f5f9; display: block; }
+
+/* === DO & DON'T CARDS === */
+.do-card { border-top: 3px solid #4ade80; }
+.do-card h3, .do-card .icon-head { color: #4ade80 !important; fill: #4ade80 !important; }
+.do-card p { padding-left: 6px; border-left: 2px solid #4ade80; margin-bottom: 6px; }
+.dont-card { border-top: 3px solid #f87171; }
+.dont-card h3, .dont-card .icon-head { color: #f87171 !important; fill: #f87171 !important; }
+.dont-card p { padding-left: 6px; border-left: 2px solid #f87171; margin-bottom: 6px; }
+.icon-head path { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+
+/* === FOOTER MAKALAH === */
+.makalah-footer { margin-top: auto; text-align: left; width: 100%; }
+.makalah-footer hr { border: none; border-top: 1px solid rgba(255, 255, 255, 0.3); margin-bottom: 5px; }
+.makalah-footer p { font-size: 7.5pt; font-weight: 600; color: rgba(255, 255, 255, 0.6); letter-spacing: 1.5px; }
+
+/* === PRINT RULES MUTLAK (MULTI-PAGE) === */
+@media print {
+    @page { size: A4; margin: 0; }
+    html, body { 
+        width: 210mm !important; 
+        height: auto !important; 
+        margin: 0 !important; 
+        padding: 0 !important; 
+        display: block !important; 
+        background-color: #0f0c1b !important; 
+    }
+    .poster-container { 
+        width: 210mm !important; 
+        height: 297mm !important; 
+        margin: 0 !important; 
+        padding: 10mm 12mm !important; 
+        box-shadow: none !important; 
+        display: flex !important;
+        page-break-after: always; /* KUNCI: Memaksa printer pindah ke kertas baru setiap container selesai */
+    }
+    .glow-orb { display: none !important; }
+    .glass-card { background-color: #171722 !important; backdrop-filter: none !important; box-shadow: none !important; }
+    * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+}
